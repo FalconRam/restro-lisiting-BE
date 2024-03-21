@@ -1,22 +1,9 @@
-import mongoose, { Document, Schema } from "mongoose";
-
-interface User extends Document {
-  name: string;
-  emailId: string;
-  password: string;
-  userType: UserType;
-  createdAt: Date;
-}
-
-enum UserType {
-  admin = "admin",
-  bo = "bo",
-  public = "public",
-}
+import mongoose, { Schema } from "mongoose";
+import { Admin, BusinessOwner, User, UserType } from "../utils/types";
 
 const userSchema: Schema<User> = new Schema(
   {
-    name: { type: String, required: true },
+    userName: { type: String, required: true },
     emailId: { type: String, required: true },
     password: { type: String, required: true },
     userType: { type: String, enum: Object.values(UserType), required: true },
@@ -24,6 +11,19 @@ const userSchema: Schema<User> = new Schema(
   { timestamps: true }
 );
 
-const User = mongoose.model<User>("User", userSchema);
+const businessOwnerSchema: Schema<BusinessOwner> = new Schema({
+  ownedRestaurants: { type: [String], default: [] },
+});
 
-export default User;
+const AdminSchema: Schema<Admin> = new Schema({
+  ownedRestaurants: { type: [String], default: [] },
+});
+
+const User = mongoose.model<User>("User", userSchema);
+const Admin = User.discriminator<Admin>("Admin", AdminSchema);
+const BusinessOwner = User.discriminator<BusinessOwner>(
+  "BusinessOwner",
+  businessOwnerSchema
+);
+
+export { User, BusinessOwner, Admin };

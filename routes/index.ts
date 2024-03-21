@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 
-import { createErrorResponse } from "../services/createResponse/index";
+import { createErrorResponse } from "../services/createResponse";
 
 import authRotues from "./auth/index";
 import listRotues from "./list/index";
