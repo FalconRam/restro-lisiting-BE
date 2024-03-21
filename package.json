@@ -1,0 +1,39 @@
+{
+  "name": "restro-lisiting-be",
+  "version": "1.0.0",
+  "description": "Restuarant Listing Application Backend",
+  "main": "index.ts",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/index.js",
+    "dev": "nodemon index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FalconRam/restro-lisiting-BE.git"
+  },
+  "author": "Ram Vignesh M",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FalconRam/restro-lisiting-BE/issues"
+  },
+  "homepage": "https://github.com/FalconRam/restro-lisiting-BE#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.2",
+    "nanoid": "^5.0.6",
+    "nodemon": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.4.3"
+  }
+}
