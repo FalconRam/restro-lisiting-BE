@@ -47,25 +47,52 @@ export interface RestaurantsListing extends Document {
     ownerType: string;
   };
   reviewsInfo: {
-    reviews: {
+    _id: string;
+    review: string;
+    rating: number;
+    reviewerId: string;
+    reviewerName: string;
+    ownerReply: {
       _id: string;
-      review: string;
-      reviewerId: string;
-      reviewReplies: {
-        _id: string;
-        reply: string;
-        replierId: string;
-        createdAt: Date;
-      }[];
-      createdAt: Date;
+      reply: string;
+      createdAt: string;
     }[];
-  };
+  }[];
+}
+
+export interface Review extends Document {
+  reviewerId: string;
+  reviewerName: string;
+  reviewId: string;
+  review: string;
+  rating: number;
+  restaurantId: string;
+  restaurantName: string;
+  ownerId: string;
+  ownerReply: {
+    _id: string;
+    reply: string;
+    createdAt: string;
+  }[];
+  repliedTo: string;
+  reviewType: ReviewType;
+  status: ReviewStatus;
 }
 
 export enum UserType {
   admin = "admin",
   bo = "bo", // Business Owner
   user = "user", // Normal User
+}
+
+export enum ReviewType {
+  review = "review", // Review to Restaurant
+  reply = "reply", // Reply to Review
+}
+
+export enum ReviewStatus {
+  replied = "REPLIED",
+  notReplied = "NOTREPLIED",
 }
 
 /* Other Types/Interface/Enums */
