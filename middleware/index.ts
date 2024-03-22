@@ -30,6 +30,62 @@ export const authMiddlware = async (
   }
 };
 
+export const adminBoMiddleware = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    if (req.userType === UserType.user)
+      return createErrorResponse(
+        res,
+        401,
+        {},
+        "Access Denied based on Buisness Rule"
+      );
+
+    if (req.userType === UserType.bo || req.userType === UserType.admin)
+      return next();
+
+    return createErrorResponse(
+      res,
+      401,
+      {},
+      "Access Denied based on Buisness Rule"
+    );
+  } catch (error: any) {
+    createErrorResponse(res, 500, {}, error.messsage || error.stack || error);
+  }
+};
+
+export const adminUserMiddleware = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    if (req.userType === UserType.bo)
+      return createErrorResponse(
+        res,
+        401,
+        {},
+        "Access Denied based on Buisness Rule"
+      );
+
+    if (req.userType === UserType.user || req.userType === UserType.admin)
+      return next();
+
+    return createErrorResponse(
+      res,
+      401,
+      {},
+      "Access Denied based on Buisness Rule"
+    );
+  } catch (error: any) {
+    createErrorResponse(res, 500, {}, error.messsage || error.stack || error);
+  }
+};
+
 export const businessOwnerMiddlware = async (
   req: Request,
   res: Response,
@@ -63,34 +119,6 @@ export const adminMiddlware = async (
         "Access Denied based on Buisness Rule"
       );
     next();
-  } catch (error: any) {
-    createErrorResponse(res, 500, {}, error.messsage || error.stack || error);
-  }
-};
-
-export const adminBoMiddleware = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  try {
-    if (req.userType === UserType.user)
-      return createErrorResponse(
-        res,
-        401,
-        {},
-        "Access Denied based on Buisness Rule"
-      );
-
-    if (req.userType === UserType.bo || req.userType === UserType.admin)
-      return next();
-
-    return createErrorResponse(
-      res,
-      401,
-      {},
-      "Access Denied based on Buisness Rule"
-    );
   } catch (error: any) {
     createErrorResponse(res, 500, {}, error.messsage || error.stack || error);
   }

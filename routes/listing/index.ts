@@ -13,13 +13,14 @@ import {
 
 const router = express.Router();
 
-router.use(authMiddlware); // All the Routes User general auth middleware
+router.use(authMiddlware); // All the Routes Uses general auth middleware
 
 router.get("/", getAllRestaurantsController);
 
+// Only Accessed by UserType - admin
 router.delete("/", adminMiddlware, deleteRestaurantController);
 
-// Accessed only by Admin and Business Owner
+// Below are accessed only by UserType - admin, bo
 router.use(adminBoMiddleware);
 
 router.patch("/", updateRestaurantController);

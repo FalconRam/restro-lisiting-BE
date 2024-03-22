@@ -7,7 +7,7 @@ import { zodListingValidationService } from "../services/zodValidationService";
 import { RestaurantsListing } from "../models/listing";
 import { Admin, BusinessOwner } from "../models/user";
 import { UserType } from "../utils/types";
-import { findWhomUpdating } from "../services/listing/helperFunctions";
+import { findWhoUpdating } from "../services/listing/helperFunctions";
 
 export const getAllRestaurantsController = async (
   req: Request,
@@ -165,7 +165,7 @@ export const updateRestaurantController = async (
      * - Business Owners can udpdate their owned Restaurant only
      *
      */
-    const { isAuthorizedToEdit, ownerDetails } = await findWhomUpdating(
+    const { isAuthorizedToEdit, ownerDetails } = await findWhoUpdating(
       req,
       restaurantDetails
     );

@@ -47,21 +47,22 @@ const restaurantsListingSchema: Schema<RestaurantsListing> = new Schema(
       {
         _id: {
           type: String,
-          default: () => nanoid(10),
+          required: true,
         },
         review: { type: String, required: true },
+        rating: {
+          type: Number,
+          max: [5, "Rating should 1 to 5"],
+          required: true,
+        },
         reviewerId: { type: String, required: true },
-        reviewReplies: [
+        reviewerName: { type: String, required: true },
+        ownerReply: [
           {
-            _id: {
-              type: String,
-              default: () => nanoid(10),
-            },
-            reply: { type: String, required: true },
-            replierId: { type: String, required: true },
+            _id: { type: String },
+            reply: { type: String },
             createdAt: {
-              type: Date,
-              default: Date.now,
+              type: String,
             },
           },
         ],

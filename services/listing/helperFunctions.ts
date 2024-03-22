@@ -2,7 +2,7 @@ import { Request } from "express";
 import { RestaurantsListing, UserType } from "../../utils/types";
 import { Admin, BusinessOwner } from "../../models/user";
 
-export const findWhomUpdating = async (
+export const findWhoUpdating = async (
   req: Request,
   restaurantDetails: RestaurantsListing
 ) => {
@@ -28,7 +28,8 @@ export const findWhomUpdating = async (
 
     let isAuthorizedToEdit =
       restaurantDetails.createdBy._id === ownerDetails._id;
-    isAuthorizedToEdit = req.userType === UserType.admin;
+    if (!isAuthorizedToEdit)
+      isAuthorizedToEdit = req.userType === UserType.admin;
 
     return { isAuthorizedToEdit, ownerDetails };
   } catch (error: any) {
