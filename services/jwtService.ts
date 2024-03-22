@@ -6,7 +6,7 @@ export const signJWTToken = async (
 ): Promise<string> => {
   try {
     const accessToken = await jwt.sign(payload, "tempSec", {
-      expiresIn: "1hr",
+      expiresIn: "2hr",
     });
     return accessToken;
   } catch (error: any) {

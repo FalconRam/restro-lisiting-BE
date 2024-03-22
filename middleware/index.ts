@@ -68,6 +68,34 @@ export const adminMiddlware = async (
   }
 };
 
+export const adminBoMiddleware = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    if (req.userType === UserType.user)
+      return createErrorResponse(
+        res,
+        401,
+        {},
+        "Access Denied based on Buisness Rule"
+      );
+
+    if (req.userType === UserType.bo || req.userType === UserType.admin)
+      return next();
+
+    return createErrorResponse(
+      res,
+      401,
+      {},
+      "Access Denied based on Buisness Rule"
+    );
+  } catch (error: any) {
+    createErrorResponse(res, 500, {}, error.messsage || error.stack || error);
+  }
+};
+
 export const userMiddlware = async (
   req: Request,
   res: Response,

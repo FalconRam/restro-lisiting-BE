@@ -23,16 +23,43 @@ export interface Admin extends User {
 
 export interface RestaurantsListing extends Document {
   restaurantName: string;
-  phoneNumber: string;
+  contactInfo: {
+    emailId: string;
+    phoneNumber: string;
+  };
   tableCapacity: number;
   address: {
     line_1: string;
     street: string;
     city: string;
-    pincode: number;
+    pincode: string;
     counrty: string;
   };
-  image: string;
+  images: string[];
+  foodMenu: {
+    _id: string;
+    itemName: string;
+    itemPrice: string;
+  }[];
+  createdBy: {
+    _id: string;
+    onwerName: string;
+    ownerType: string;
+  };
+  reviewsInfo: {
+    reviews: {
+      _id: string;
+      review: string;
+      reviewerId: string;
+      reviewReplies: {
+        _id: string;
+        reply: string;
+        replierId: string;
+        createdAt: Date;
+      }[];
+      createdAt: Date;
+    }[];
+  };
 }
 
 export enum UserType {
