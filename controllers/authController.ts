@@ -9,6 +9,7 @@ import {
 import { User, BusinessOwner, Admin } from "../models/user";
 import { UserRequestBody, UserType } from "../utils/types";
 import { signJWTToken } from "../services/jwtService";
+import { zodAuthValidationService } from "../services/zodValidationService";
 
 /**
  * @Description Responsible create New User Credential
@@ -21,13 +22,8 @@ import { signJWTToken } from "../services/jwtService";
  */
 export const createUserController = async (req: Request, res: Response) => {
   try {
-    const createUserBody = zod.object({
-      userName: zod.string(),
-      emailId: zod.string().email(),
-      password: zod.string(),
-      userType: zod.nativeEnum(UserType),
-    });
-    const valResult = createUserBody.safeParse(req.body);
+    const valResult = zodAuthValidationService.createUserBody(req.body);
+
     if (!valResult.success)
       return createErrorResponse(res, 400, {}, "Request Format Invalid");
 
@@ -99,11 +95,7 @@ export const createUserController = async (req: Request, res: Response) => {
  */
 export const loginController = async (req: Request, res: Response) => {
   try {
-    const loginUserBody = zod.object({
-      emailId: zod.string().email(),
-      password: zod.string(),
-    });
-    const valResult = loginUserBody.safeParse(req.body);
+    const valResult = zodAuthValidationService.loginUserBody(req.body);
 
     if (!valResult.success)
       return createErrorResponse(res, 400, {}, "Request Format Invalid");
