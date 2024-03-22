@@ -3,7 +3,7 @@ import { Admin, BusinessOwner, User, UserType } from "../utils/types";
 
 const userSchema: Schema<User> = new Schema(
   {
-    userName: { type: String, required: true },
+    userName: { type: String, required: true, unique: true },
     emailId: { type: String, required: true },
     password: { type: String, required: true },
     userType: { type: String, enum: Object.values(UserType), required: true },

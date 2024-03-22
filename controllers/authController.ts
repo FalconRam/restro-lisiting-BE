@@ -78,7 +78,7 @@ export const createUserController = async (req: Request, res: Response) => {
       updatedAt: newUser.updatedAt,
     };
 
-    createSuccessResponse(res, 201, selectedUserData, "User Created");
+    return createSuccessResponse(res, 201, selectedUserData, "User Created");
   } catch (error: any) {
     createErrorResponse(res, 500, {}, error.messsage || error.stack || error);
   }
