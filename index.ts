@@ -1,14 +1,15 @@
-import express, { Request, Response, Application } from "express";
+import express, { Request, Response, Application, Express } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 
 import rootRouter from "./routes/index";
 import { createSuccessResponse } from "./services/createResponse";
 import mongoose from "mongoose";
+import swaggerDocs from "./swagger";
 
 dotenv.config();
 
-const app: Application = express();
+const app: Express = express();
 
 const PORT = process.env.PORT || 5000;
 const DB_CONNECTION_URL = process.env.DB_CONNECTION_URL;
@@ -28,7 +29,17 @@ app.use(
 );
 app.use(cors());
 
-// To Check if app is up!
+/**
+ * @openapi
+ * /health:
+ *  get:
+ *     tags:
+ *     - Health
+ *     description: Responds if the app is up and running
+ *     responses:
+ *       200:
+ *         description: To Check if app is up!
+ */
 app.get("/health", (req: Request, res: Response) => {
   createSuccessResponse(
     res,
@@ -49,5 +60,6 @@ mongoose
   .connect(DB_CONNECTION_URL)
   .then(() => {
     app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));
+    swaggerDocs(app, PORT);
   })
   .catch((err) => console.log(err));

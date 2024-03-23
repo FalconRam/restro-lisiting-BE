@@ -24,16 +24,18 @@ export const findWhoIs = async (
     if (!userDetails) throw new Error("Unknown user");
 
     if (isToCheckAuthorized && restaurantDetails) {
-      let isAuthorizedToDelete = false;
+      let isAuthorizedToDo = false;
       restaurantDetails.reviewsInfo.map((review) => {
-        if (review.reviewerId === userDetails._id.toString())
-          isAuthorizedToDelete = true;
+        if (
+          review.reviewerId === userDetails._id.toString() &&
+          review._id === req.query.reviewId
+        )
+          isAuthorizedToDo = true;
       });
 
-      if (!isAuthorizedToDelete)
-        isAuthorizedToDelete = req.userType === UserType.admin;
+      if (!isAuthorizedToDo) isAuthorizedToDo = req.userType === UserType.admin;
 
-      return { isAuthorizedToDelete, userDetails };
+      return { isAuthorizedToDo, userDetails };
     }
     return { userDetails };
   } catch (error: any) {

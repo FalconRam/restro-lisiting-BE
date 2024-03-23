@@ -4,11 +4,12 @@ import {
   createSuccessResponse,
 } from "../services/createResponse";
 import { Review } from "../models/reveiw";
-import { ReviewStatus } from "../utils/types";
+import { ReviewStatus, UserType } from "../utils/types";
 import { zodReviewValidationService } from "../services/zodValidationService";
 import { RestaurantsListing } from "../models/listing";
 import { findWhoIs } from "../services/review/helperFunctions";
 import { nanoid } from "nanoid";
+import { BusinessOwner } from "../models/user";
 
 export const createReviewController = async (req: Request, res: Response) => {
   try {
@@ -149,6 +150,84 @@ export const replyToReviewController = async (req: Request, res: Response) => {
   }
 };
 
+export const updateReviewController = async (req: Request, res: Response) => {
+  try {
+    let restaurantDetails = await RestaurantsListing.findById(
+      req.query.restaurantId
+    ).select("-updatedAt -__v");
+
+    if (!restaurantDetails)
+      return createErrorResponse(res, 404, {}, "No Restaurant Found");
+
+    const { isAuthorizedToDo } = await findWhoIs(req, true, restaurantDetails);
+
+    if (!isAuthorizedToDo)
+      return createErrorResponse(res, 401, {}, "Unauthorized to Update");
+
+    restaurantDetails.reviewsInfo.forEach((review) => {
+      if (review._id === req.query.reviewId) {
+        review.review = req.body.review;
+        review.rating = req.body.rating;
+      }
+    });
+
+    restaurantDetails = await RestaurantsListing.findByIdAndUpdate(
+      req.query.restaurantId,
+      restaurantDetails,
+      { new: true }
+    );
+
+    return createSuccessResponse(
+      res,
+      200,
+      { restaurantDetails },
+      "Your reviews retrieved successfully!..."
+    );
+  } catch (error: any) {
+    createErrorResponse(res, 500, {}, error.messsage || error.stack || error);
+  }
+};
+
+export const updateReplyController = async (req: Request, res: Response) => {
+  try {
+    const restaurantDetails = await RestaurantsListing.findById(
+      req.query.restaurantId
+    ).select("-updatedAt -__v");
+
+    if (!restaurantDetails)
+      return createErrorResponse(res, 404, {}, "No Restaurant Found");
+
+    if (req._id !== restaurantDetails.createdBy._id)
+      return createErrorResponse(res, 401, {}, "Unauthorized to Update");
+
+    restaurantDetails.reviewsInfo.forEach((review) => {
+      if (
+        review._id === req.query.reviewId &&
+        review.ownerReply[0]._id === req.query.replyId
+      )
+        review.ownerReply[0].reply = req.body.reply;
+    });
+
+    const updatedRestaurantDetails = await RestaurantsListing.findByIdAndUpdate(
+      req.query.restaurantId,
+      restaurantDetails,
+      { new: true }
+    );
+
+    if (!updatedRestaurantDetails)
+      throw new Error("Error while updating reply");
+
+    return createSuccessResponse(
+      res,
+      200,
+      updatedRestaurantDetails,
+      "Your reviews retrieved successfully!..."
+    );
+  } catch (error: any) {
+    createErrorResponse(res, 500, {}, error.messsage || error.stack || error);
+  }
+};
+
 export const deleteReviewController = async (req: Request, res: Response) => {
   try {
     if (!req.query.reviewId || !req.query.restaurantId)
@@ -169,13 +248,11 @@ export const deleteReviewController = async (req: Request, res: Response) => {
         {},
         "Given Restaurant Details not correct!"
       );
+    let { isAuthorizedToDo } = await findWhoIs(req, true, restaurantDetails);
 
-    const { isAuthorizedToDelete, userDetails } = await findWhoIs(
-      req,
-      true,
-      restaurantDetails
-    );
-    if (!isAuthorizedToDelete)
+    if (req.userType === UserType.admin) isAuthorizedToDo === true;
+
+    if (!isAuthorizedToDo)
       return createErrorResponse(res, 401, {}, "Unauthorized to Delete");
 
     const countBeforDel = restaurantDetails.reviewsInfo.length;

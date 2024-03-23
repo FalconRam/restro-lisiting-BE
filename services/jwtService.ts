@@ -25,9 +25,11 @@ export const validateJWTToken = async (
   isDataRequired: boolean = true
 ): Promise<customJWTPayload | boolean> => {
   try {
+    if (!process.env.JWT_TOKEN_SECRET_KEY) throw new Error("JWT token not set");
+
     const decodedTokenData = (await jwt.verify(
       token,
-      "tempSec"
+      process.env.JWT_TOKEN_SECRET_KEY
     )) as customJWTPayload;
     return isDataRequired ? decodedTokenData : true;
   } catch (error: any) {

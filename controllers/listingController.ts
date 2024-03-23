@@ -115,7 +115,7 @@ export const deleteRestaurantController = async (
     });
 
     if (!isAvailable)
-      createErrorResponse(
+      return createErrorResponse(
         res,
         404,
         {},
