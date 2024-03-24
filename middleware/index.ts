@@ -3,6 +3,14 @@ import { createErrorResponse } from "../services/createResponse";
 import { validateJWTToken } from "../services/jwtService";
 import { UserType } from "../utils/types";
 
+/**
+ *@function authMiddlware
+ *
+ * @description
+ * - General Authentication middleware
+ * - Set _id, emailId * userType on req
+ *
+ */
 export const authMiddlware = async (
   req: Request,
   res: Response,
@@ -30,6 +38,13 @@ export const authMiddlware = async (
   }
 };
 
+/**
+ *@function adminBoMiddleware
+ *
+ * @description
+ * - To check bo & admin can access routes
+ *
+ */
 export const adminBoMiddleware = async (
   req: Request,
   res: Response,
@@ -58,6 +73,13 @@ export const adminBoMiddleware = async (
   }
 };
 
+/**
+ *@function adminUserMiddleware
+ *
+ * @description
+ * - To check user & admin can access routes
+ *
+ */
 export const adminUserMiddleware = async (
   req: Request,
   res: Response,
@@ -86,6 +108,13 @@ export const adminUserMiddleware = async (
   }
 };
 
+/**
+ *@function businessOwnerMiddlware
+ *
+ * @description
+ * - To check Business Owner can only access routes
+ *
+ */
 export const businessOwnerMiddlware = async (
   req: Request,
   res: Response,
@@ -105,6 +134,13 @@ export const businessOwnerMiddlware = async (
   }
 };
 
+/**
+ *@function adminMiddlware
+ *
+ * @description
+ * - To check Admin can only access routes
+ *
+ */
 export const adminMiddlware = async (
   req: Request,
   res: Response,
@@ -112,25 +148,6 @@ export const adminMiddlware = async (
 ) => {
   try {
     if (req.userType === UserType.user || req.userType === UserType.bo)
-      return createErrorResponse(
-        res,
-        401,
-        {},
-        "Access Denied based on Buisness Rule"
-      );
-    next();
-  } catch (error: any) {
-    createErrorResponse(res, 500, {}, error.messsage || error.stack || error);
-  }
-};
-
-export const userMiddlware = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  try {
-    if (req.userType === UserType.admin || req.userType === UserType.bo)
       return createErrorResponse(
         res,
         401,

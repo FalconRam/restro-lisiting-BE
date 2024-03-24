@@ -1,0 +1,337 @@
+{
+	"info": {
+		"_postman_id": "8b4e555b-e829-437c-9aaa-5c47d82069e5",
+		"name": "Review",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17117187"
+	},
+	"item": [
+		{
+			"name": "getMyReviews",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/review/getMyReviews",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"review",
+						"getMyReviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bo/getPendingReviews",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{boJwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/review/bo/getPendingReviews",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"review",
+						"bo",
+						"getPendingReviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-review",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"review\": \"Food city is Madurai, semma sappadu\",\r\n    \"rating\": 5,\r\n    \"restaurantId\": \"65fd255c18affdf45d849141\",\r\n    \"ownerId\": \"65fc5760a6ebc1c47bdb99ed\",\r\n    \"reviewType\": \"review\",\r\n    \"repliedTo\": \"\"\r\n}\r\n// reviewType: review, reply",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/review/create-review",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"review",
+						"create-review"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reply",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{boJwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"reply\": \"Thanks for your review Sir!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/review/reply?reviewId=65ffc0aa1c50f7b12928fdd7&restaurantId=65fd255c18affdf45d849141",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"review",
+						"reply"
+					],
+					"query": [
+						{
+							"key": "reviewId",
+							"value": "65ffc0aa1c50f7b12928fdd7"
+						},
+						{
+							"key": "restaurantId",
+							"value": "65fd255c18affdf45d849141"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateReview",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    {\r\n    \"review\": \"Food city is Madurai, semma sappadu\",\r\n    \"rating\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/review?reviewId=65fdcebda5035b763d686518&restaurantId=65fd255c18affdf45d849141",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"review"
+					],
+					"query": [
+						{
+							"key": "reviewId",
+							"value": "65fdcebda5035b763d686518"
+						},
+						{
+							"key": "restaurantId",
+							"value": "65fd255c18affdf45d849141"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reply-update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{boJwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"reply\": \"Thanks Sir!...\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/review/reply-update?replyId=h32GjvMYCQ&reviewId=65feaceee8bf31b267b531ad&restaurantId=65fd255c18affdf45d849141",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"review",
+						"reply-update"
+					],
+					"query": [
+						{
+							"key": "replyId",
+							"value": "h32GjvMYCQ"
+						},
+						{
+							"key": "reviewId",
+							"value": "65feaceee8bf31b267b531ad"
+						},
+						{
+							"key": "restaurantId",
+							"value": "65fd255c18affdf45d849141"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteReview",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/v1/review?reviewId=65fdcebda5035b763d686518&restaurantId=65fd255c18affdf45d849141",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"review"
+					],
+					"query": [
+						{
+							"key": "reviewId",
+							"value": "65fdcebda5035b763d686518"
+						},
+						{
+							"key": "restaurantId",
+							"value": "65fd255c18affdf45d849141"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -9,7 +9,6 @@ import { zodReviewValidationService } from "../services/zodValidationService";
 import { RestaurantsListing } from "../models/listing";
 import { findWhoIs } from "../services/review/helperFunctions";
 import { nanoid } from "nanoid";
-import { BusinessOwner } from "../models/user";
 
 export const createReviewController = async (req: Request, res: Response) => {
   try {
@@ -37,14 +36,25 @@ export const createReviewController = async (req: Request, res: Response) => {
         "Given Restaurant Details not correct!"
       );
 
+    /**
+     * @Function findWhoIs
+     *
+     * @Description
+     * Business Rules,
+     * - Admin & User can create a Review for any Restaurant
+     * - Here only collects only User details, the 2nd argument passed as false(isToCheckAuthorized),
+     *   so only retrieve user details.
+     * - This function can also returns isAuthorizedToDo boolean, based on Requirement
+     */
     const { userDetails } = await findWhoIs(req, false);
 
     // Adding more Required Details as per Review Schema
     req.body.reviewerId = req._id;
     req.body.reviewerName = userDetails.userName;
     req.body.restaurantName = restaurantDetails.restaurantName;
-    req.body.status = ReviewStatus.notReplied;
+    req.body.status = ReviewStatus.notReplied; // Initial state is NOTREPLIED
 
+    // Create new Review Record
     const newReview = await Review.create(req.body);
 
     let reviewBody = {
@@ -108,6 +118,7 @@ export const replyToReviewController = async (req: Request, res: Response) => {
       createdAt: new Date().toISOString(),
     };
 
+    // Add Response to the Review
     restaurantDetails.reviewsInfo.map((review) => {
       if (review._id === req.query.reviewId) {
         review.ownerReply.push(reviewBody);
@@ -129,7 +140,7 @@ export const replyToReviewController = async (req: Request, res: Response) => {
       );
 
     reviewDetails.ownerReply.push(reviewBody);
-    reviewDetails.status = ReviewStatus.replied;
+    reviewDetails.status = ReviewStatus.replied; // Mark Status as REPLIED
 
     const updatedReviewDetails = await Review.findByIdAndUpdate(
       { _id: reviewDetails._id },
@@ -159,11 +170,22 @@ export const updateReviewController = async (req: Request, res: Response) => {
     if (!restaurantDetails)
       return createErrorResponse(res, 404, {}, "No Restaurant Found");
 
+    /**
+     * @Function findWhoIs
+     *
+     * @Description
+     * Business Rules,
+     * - Admin & User can create a Review for any Restaurant
+     * - Here only collects only User details, the 2nd argument passed as true(isToCheckAuthorized),
+     * - This function can also returns isAuthorizedToDo boolean,
+     *    based on user session whether, they can update
+     */
     const { isAuthorizedToDo } = await findWhoIs(req, true, restaurantDetails);
 
     if (!isAuthorizedToDo)
       return createErrorResponse(res, 401, {}, "Unauthorized to Update");
 
+    // Add New Review to the Restaurant
     restaurantDetails.reviewsInfo.forEach((review) => {
       if (review._id === req.query.reviewId) {
         review.review = req.body.review;
@@ -180,8 +202,8 @@ export const updateReviewController = async (req: Request, res: Response) => {
     return createSuccessResponse(
       res,
       200,
-      { restaurantDetails },
-      "Your reviews retrieved successfully!..."
+      {},
+      "Your Review updated successfully!..."
     );
   } catch (error: any) {
     createErrorResponse(res, 500, {}, error.messsage || error.stack || error);
@@ -248,8 +270,21 @@ export const deleteReviewController = async (req: Request, res: Response) => {
         {},
         "Given Restaurant Details not correct!"
       );
+
+    /**
+     * @Function findWhoIs
+     *
+     * @Description
+     * Business Rules,
+     * - Admin & User can create a Review for any Restaurant
+     * - Here only collects only User details, the 2nd argument passed as true(isToCheckAuthorized),
+     * - This function can also returns isAuthorizedToDo boolean,
+     *    based on user session whether, they can update
+     */
     let { isAuthorizedToDo } = await findWhoIs(req, true, restaurantDetails);
 
+    // isAuthorizedToDo set as true, if the User session is admin,
+    // since they can delete any review
     if (req.userType === UserType.admin) isAuthorizedToDo === true;
 
     if (!isAuthorizedToDo)
@@ -271,6 +306,7 @@ export const deleteReviewController = async (req: Request, res: Response) => {
     );
     if (!updatedRestaurantDetails) throw new Error();
 
+    // Deletes the Review record from Review doc in DB
     await Review.findByIdAndDelete(req.query.reviewId);
 
     return createSuccessResponse(
@@ -289,6 +325,7 @@ export const getPendingReviewController = async (
   res: Response
 ) => {
   try {
+    // Get Not Responded Reviews list based on User bo session
     const pendingReview = await Review.find({
       $and: [{ ownerId: req._id }, { status: ReviewStatus.notReplied }],
     }).select("-__v");
@@ -300,6 +337,7 @@ export const getPendingReviewController = async (
 
 export const getMyReviewsController = async (req: Request, res: Response) => {
   try {
+    // Get Reviews list based on User bo session
     const myReviews = await Review.find({ reviewerId: req._id }).select(
       "-updatedAt -__v"
     );

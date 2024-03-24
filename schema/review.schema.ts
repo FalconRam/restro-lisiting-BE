@@ -471,6 +471,206 @@ export const createReviewSchema = zod.object({
  *         message: Review deleted Successfully!...
  */
 
+/* Review Udpate */
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     UpdateReviewRequest:
+ *       type: object
+ *       properties:
+ *         review:
+ *           type: string
+ *         rating:
+ *           type: number
+ *       required:
+ *         - review
+ *         - rating
+ *       example:
+ *         review: "Food city is Madurai, semma sappadu - update"
+ *         rating: 5
+ *     UpdateReviewResponse:
+ *       type: object
+ *       properties:
+ *         status:
+ *           type: boolean
+ *         data:
+ *           type: object
+ *         message:
+ *           type: string
+ *       example:
+ *         status: true
+ *         data: {}
+ *         message: "Your Review updated successfully!..."
+ *
+ */
+
+/* Reply Update */
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     ReplyUpdateRequest:
+ *       type: object
+ *       properties:
+ *         reply:
+ *           type: string
+ *       example:
+ *         reply: "Thanks Sir!..."
+ *
+ *     ReplyUpdateResponse:
+ *       type: object
+ *       properties:
+ *         status:
+ *           type: boolean
+ *         data:
+ *           type: object
+ *           properties:
+ *             contactInfo:
+ *               type: object
+ *               properties:
+ *                 emailId:
+ *                   type: string
+ *                 phoneNumber:
+ *                   type: string
+ *             address:
+ *               type: object
+ *               properties:
+ *                 line_1:
+ *                   type: string
+ *                 street:
+ *                   type: string
+ *                 city:
+ *                   type: string
+ *                 pincode:
+ *                   type: string
+ *                 country:
+ *                   type: string
+ *             createdBy:
+ *               type: object
+ *               properties:
+ *                 _id:
+ *                   type: string
+ *                 onwerName:
+ *                   type: string
+ *                 ownerType:
+ *                   type: string
+ *             _id:
+ *               type: string
+ *             restaurantName:
+ *               type: string
+ *             tableCapacity:
+ *               type: number
+ *             images:
+ *               type: array
+ *               items:
+ *                 type: string
+ *             foodMenu:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   _id:
+ *                     type: string
+ *                   itemName:
+ *                     type: string
+ *                   itemPrice:
+ *                     type: string
+ *             reviewsInfo:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   _id:
+ *                     type: string
+ *                   review:
+ *                     type: string
+ *                   rating:
+ *                     type: number
+ *                   reviewerId:
+ *                     type: string
+ *                   reviewerName:
+ *                     type: string
+ *                   ownerReply:
+ *                     type: array
+ *                     items:
+ *                       type: object
+ *                       properties:
+ *                         _id:
+ *                           type: string
+ *                         reply:
+ *                           type: string
+ *                         createdAt:
+ *                           type: string
+ *                   createdAt:
+ *                     type: string
+ *             createdAt:
+ *               type: string
+ *             updatedAt:
+ *               type: string
+ *             __v:
+ *               type: number
+ *         message:
+ *           type: string
+ *       example:
+ *         status: true
+ *         data:
+ *           contactInfo:
+ *             emailId: "maduraivillas@gmail.com"
+ *             phoneNumber: "1234567890"
+ *           address:
+ *             line_1: "12"
+ *             street: "Vizhakuthoon"
+ *             city: "Madurai"
+ *             pincode: "625001"
+ *             country: "India"
+ *           createdBy:
+ *             _id: "65fc5760a6ebc1c47bdb99ed"
+ *             onwerName: "BO"
+ *             ownerType: "bo"
+ *           _id: "65fd255c18affdf45d849141"
+ *           restaurantName: "Madurai Villas"
+ *           tableCapacity: 50
+ *           images:
+ *             - "https://example.com/image1.jpg"
+ *           foodMenu:
+ *             - _id: "SjelAZ0CSG"
+ *               itemName: "Mutton Biriyani"
+ *               itemPrice: "210.00"
+ *             - _id: "PfCQ9PS09j"
+ *               itemName: "Chicken Biriyani"
+ *               itemPrice: "180.00"
+ *           reviewsInfo:
+ *             - _id: "65fdcee0a5035b763d686521"
+ *               review: "Food city is Madurai, semma sappadu"
+ *               rating: 5
+ *               reviewerId: "65fd08f34fb8cbd5f05aa159"
+ *               reviewerName: "Ram Vignesh M"
+ *               ownerReply: []
+ *               createdAt: "2024-03-22T18:33:04.610Z"
+ *             - _id: "65feaceee8bf31b267b531ad"
+ *               review: "Food city is Madurai, semma sappadu"
+ *               rating: 5
+ *               reviewerId: "65fd08f34fb8cbd5f05aa159"
+ *               reviewerName: "Ram Vignesh M"
+ *               ownerReply:
+ *                 - _id: "h32GjvMYCQ"
+ *                   reply: "Thanks Sir!!..."
+ *                   createdAt: "2024-03-23T10:22:59.923Z"
+ *               createdAt: "2024-03-23T10:20:30.989Z"
+ *             - _id: "65feb331bdf7d67df26d2f1c"
+ *               review: "Food city is Madurai, semma sappadu"
+ *               rating: 5
+ *               reviewerId: "65fc5783a6ebc1c47bdb99f0"
+ *               reviewerName: "Admin"
+ *               ownerReply: []
+ *               createdAt: "2024-03-23T10:47:13.540Z"
+ *           createdAt: "2024-03-22T06:29:48.830Z"
+ *           updatedAt: "2024-03-24T05:49:37.502Z"
+ *           __v: 0
+ *         message: "Your reviews retrieved successfully!..."
+ */
+
 /**
  * Define the type for the input data
  */

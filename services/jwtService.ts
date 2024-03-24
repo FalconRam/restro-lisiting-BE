@@ -5,7 +5,8 @@ export const signJWTToken = async (
   payload: customJWTPayload
 ): Promise<string> => {
   try {
-    if (!process.env.JWT_TOKEN_SECRET_KEY) throw new Error("JWT token not set");
+    if (!process.env.JWT_TOKEN_SECRET_KEY)
+      throw new Error("JWT secret key not set");
 
     const accessToken = await jwt.sign(
       payload,
@@ -20,12 +21,22 @@ export const signJWTToken = async (
   }
 };
 
+/**
+ *@function validateJWTToken
+ *
+ * @description Validates if the Token is Valid,
+ * if it not valid returns boolean false
+ * It is Valid, returns boolean decoded date,
+ * if isDataRequired sent as false, the return true only on valid token
+ *
+ */
 export const validateJWTToken = async (
   token: string,
   isDataRequired: boolean = true
 ): Promise<customJWTPayload | boolean> => {
   try {
-    if (!process.env.JWT_TOKEN_SECRET_KEY) throw new Error("JWT token not set");
+    if (!process.env.JWT_TOKEN_SECRET_KEY)
+      throw new Error("JWT secret key not set");
 
     const decodedTokenData = (await jwt.verify(
       token,

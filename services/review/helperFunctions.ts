@@ -19,13 +19,16 @@ export const findWhoIs = async (
         break;
       }
       default:
+        // throw error on other role apart from admin & user
         throw new Error(`Unknown user type ${req.userType}`);
     }
+
     if (!userDetails) throw new Error("Unknown user");
 
     if (isToCheckAuthorized && restaurantDetails) {
       let isAuthorizedToDo = false;
       restaurantDetails.reviewsInfo.map((review) => {
+        // set true only if reviewerId & session user Id and reviewId & reviewId sent on query matched
         if (
           review.reviewerId === userDetails._id.toString() &&
           review._id === req.query.reviewId
@@ -33,6 +36,7 @@ export const findWhoIs = async (
           isAuthorizedToDo = true;
       });
 
+      // set authorization as true if the user is admin, since User can do any action
       if (!isAuthorizedToDo) isAuthorizedToDo = req.userType === UserType.admin;
 
       return { isAuthorizedToDo, userDetails };

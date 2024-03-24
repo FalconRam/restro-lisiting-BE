@@ -1,0 +1,3227 @@
+{
+	"info": {
+		"_postman_id": "b6b6e848-b38f-46fa-99be-81301ac7c383",
+		"name": "Restaurant Listing API",
+		"description": "API documentation for Restaurant Listing Application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17117187"
+	},
+	"item": [
+		{
+			"name": "health",
+			"item": [
+				{
+					"name": "Responds if the app is up and running",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/health",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"health"
+							]
+						},
+						"description": "Responds if the app is up and running"
+					},
+					"response": [
+						{
+							"name": "To Check if app is up!",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/health",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"health"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "v1",
+					"item": [
+						{
+							"name": "auth",
+							"item": [
+								{
+									"name": "create-user",
+									"item": [
+										{
+											"name": "Register a New User",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"userName\": \"Admin Ram\",\n  \"emailId\": \"adminram@gmail.com\",\n  \"password\": \"adminpass\",\n  \"userType\": \"admin\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/auth/create-user",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"auth",
+														"create-user"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"userName\": \"Admin Ram\",\n  \"emailId\": \"adminram@gmail.com\",\n  \"password\": \"adminpass\",\n  \"userType\": \"admin\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/auth/create-user",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"auth",
+																"create-user"
+															]
+														}
+													},
+													"status": "Created",
+													"code": 201,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"_id\": \"<string>\",\n  \"userName\": \"<string>\",\n  \"emailId\": \"<string>\",\n  \"userType\": \"<string>\",\n  \"accessToken\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}"
+												},
+												{
+													"name": "Bad request",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"userName\": \"Admin Ram\",\n  \"emailId\": \"adminram@gmail.com\",\n  \"password\": \"adminpass\",\n  \"userType\": \"admin\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/auth/create-user",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"auth",
+																"create-user"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Length Required",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"userName\": \"Admin Ram\",\n  \"emailId\": \"adminram@gmail.com\",\n  \"password\": \"adminpass\",\n  \"userType\": \"admin\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/auth/create-user",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"auth",
+																"create-user"
+															]
+														}
+													},
+													"status": "Length Required",
+													"code": 411,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Internal Server Error",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"userName\": \"Admin Ram\",\n  \"emailId\": \"adminram@gmail.com\",\n  \"password\": \"adminpass\",\n  \"userType\": \"admin\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/auth/create-user",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"auth",
+																"create-user"
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "signin",
+									"item": [
+										{
+											"name": "Login User",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"emailId\": \"adminram@gmail.com\",\n  \"password\": \"adminpass\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/auth/signin",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"auth",
+														"signin"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"emailId\": \"adminram@gmail.com\",\n  \"password\": \"adminpass\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/auth/signin",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"auth",
+																"signin"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"_id\": \"<string>\",\n  \"userName\": \"<string>\",\n  \"emailId\": \"<string>\",\n  \"userType\": \"<string>\",\n  \"accessToken\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}"
+												},
+												{
+													"name": "Bad request",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"emailId\": \"adminram@gmail.com\",\n  \"password\": \"adminpass\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/auth/signin",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"auth",
+																"signin"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Not found",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"emailId\": \"adminram@gmail.com\",\n  \"password\": \"adminpass\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/auth/signin",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"auth",
+																"signin"
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Internal Server Error",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"emailId\": \"adminram@gmail.com\",\n  \"password\": \"adminpass\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/auth/signin",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"auth",
+																"signin"
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "listing",
+							"item": [
+								{
+									"name": "create-restaurant",
+									"item": [
+										{
+											"name": "Create a new restaurant (Admin or Business Owner only)",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"restaurantName\": \"<string>\",\n  \"contactInfo\": {\n    \"emailId\": \"<email>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"address\": {\n    \"city\": \"<string>\",\n    \"pincode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"line_1\": \"<string>\",\n    \"street\": \"<string>\"\n  },\n  \"tableCapacity\": \"<integer>\",\n  \"images\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"foodMenu\": [\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    },\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/listing/create-restaurant",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"listing",
+														"create-restaurant"
+													]
+												},
+												"description": "This endpoint allows creating a new restaurant. Only users with the role of admin or business owner can access this endpoint."
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"restaurantName\": \"<string>\",\n  \"contactInfo\": {\n    \"emailId\": \"<email>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"address\": {\n    \"city\": \"<string>\",\n    \"pincode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"line_1\": \"<string>\",\n    \"street\": \"<string>\"\n  },\n  \"tableCapacity\": \"<integer>\",\n  \"images\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"foodMenu\": [\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    },\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    }\n  ]\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/listing/create-restaurant",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"listing",
+																"create-restaurant"
+															]
+														}
+													},
+													"status": "Created",
+													"code": 201,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"_id\": \"<string>\",\n  \"restaurantName\": \"<string>\",\n  \"contactInfo\": {\n    \"emailId\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"address\": {\n    \"line_1\": \"<string>\",\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"pincode\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"tableCapacity\": \"<integer>\",\n  \"images\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"foodMenu\": [\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    },\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    }\n  ],\n  \"createdBy\": {\n    \"_id\": \"<string>\",\n    \"onwerName\": \"<string>\",\n    \"ownerType\": \"<string>\"\n  },\n  \"reviewsInfo\": [\n    {\n      \"_id\": \"<string>\",\n      \"review\": \"<string>\",\n      \"rating\": \"<number>\",\n      \"reviewerId\": \"<string>\",\n      \"reviewerName\": \"<string>\",\n      \"ownerReply\": [\n        {\n          \"_id\": \"<string>\",\n          \"reply\": \"<string>\",\n          \"createdAt\": \"<dateTime>\"\n        },\n        {\n          \"_id\": \"<string>\",\n          \"reply\": \"<string>\",\n          \"createdAt\": \"<dateTime>\"\n        }\n      ],\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"_id\": \"<string>\",\n      \"review\": \"<string>\",\n      \"rating\": \"<number>\",\n      \"reviewerId\": \"<string>\",\n      \"reviewerName\": \"<string>\",\n      \"ownerReply\": [\n        {\n          \"_id\": \"<string>\",\n          \"reply\": \"<string>\",\n          \"createdAt\": \"<dateTime>\"\n        },\n        {\n          \"_id\": \"<string>\",\n          \"reply\": \"<string>\",\n          \"createdAt\": \"<dateTime>\"\n        }\n      ],\n      \"createdAt\": \"<dateTime>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "Bad request",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"restaurantName\": \"<string>\",\n  \"contactInfo\": {\n    \"emailId\": \"<email>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"address\": {\n    \"city\": \"<string>\",\n    \"pincode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"line_1\": \"<string>\",\n    \"street\": \"<string>\"\n  },\n  \"tableCapacity\": \"<integer>\",\n  \"images\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"foodMenu\": [\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    },\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    }\n  ]\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/listing/create-restaurant",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"listing",
+																"create-restaurant"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Unauthorized",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"restaurantName\": \"<string>\",\n  \"contactInfo\": {\n    \"emailId\": \"<email>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"address\": {\n    \"city\": \"<string>\",\n    \"pincode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"line_1\": \"<string>\",\n    \"street\": \"<string>\"\n  },\n  \"tableCapacity\": \"<integer>\",\n  \"images\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"foodMenu\": [\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    },\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    }\n  ]\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/listing/create-restaurant",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"listing",
+																"create-restaurant"
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Forbidden",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"restaurantName\": \"<string>\",\n  \"contactInfo\": {\n    \"emailId\": \"<email>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"address\": {\n    \"city\": \"<string>\",\n    \"pincode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"line_1\": \"<string>\",\n    \"street\": \"<string>\"\n  },\n  \"tableCapacity\": \"<integer>\",\n  \"images\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"foodMenu\": [\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    },\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    }\n  ]\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/listing/create-restaurant",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"listing",
+																"create-restaurant"
+															]
+														}
+													},
+													"status": "Forbidden",
+													"code": 403,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Not found",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"restaurantName\": \"<string>\",\n  \"contactInfo\": {\n    \"emailId\": \"<email>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"address\": {\n    \"city\": \"<string>\",\n    \"pincode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"line_1\": \"<string>\",\n    \"street\": \"<string>\"\n  },\n  \"tableCapacity\": \"<integer>\",\n  \"images\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"foodMenu\": [\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    },\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    }\n  ]\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/listing/create-restaurant",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"listing",
+																"create-restaurant"
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Internal Server Error",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"restaurantName\": \"<string>\",\n  \"contactInfo\": {\n    \"emailId\": \"<email>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"address\": {\n    \"city\": \"<string>\",\n    \"pincode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"line_1\": \"<string>\",\n    \"street\": \"<string>\"\n  },\n  \"tableCapacity\": \"<integer>\",\n  \"images\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"foodMenu\": [\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    },\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    }\n  ]\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/listing/create-restaurant",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"listing",
+																"create-restaurant"
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "Get all restaurants (All Logged in Users)",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/listing",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"listing"
+											]
+										},
+										"description": "Accessed by all types of Roles who are logged in"
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/listing",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"listing"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"status\": \"<boolean>\",\n  \"data\": {\n    \"restaurantsList\": [\n      {\n        \"contactInfo\": {\n          \"emailId\": \"<string>\",\n          \"phoneNumber\": \"<string>\"\n        },\n        \"address\": {\n          \"line_1\": \"<string>\",\n          \"street\": \"<string>\",\n          \"city\": \"<string>\",\n          \"pincode\": \"<string>\",\n          \"country\": \"<string>\"\n        },\n        \"createdBy\": {\n          \"_id\": \"<string>\",\n          \"onwerName\": \"<string>\",\n          \"ownerType\": \"<string>\"\n        },\n        \"_id\": \"<string>\",\n        \"restaurantName\": \"<string>\",\n        \"tableCapacity\": \"<integer>\",\n        \"images\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"foodMenu\": [\n          {\n            \"itemName\": \"<string>\",\n            \"itemPrice\": \"<string>\",\n            \"_id\": \"<string>\"\n          },\n          {\n            \"itemName\": \"<string>\",\n            \"itemPrice\": \"<string>\",\n            \"_id\": \"<string>\"\n          }\n        ],\n        \"reviewsInfo\": [\n          {\n            \"_id\": \"<string>\",\n            \"review\": \"<string>\",\n            \"rating\": \"<integer>\",\n            \"reviewerId\": \"<string>\",\n            \"reviewerName\": \"<string>\",\n            \"ownerReply\": [\n              {\n                \"_id\": \"<string>\",\n                \"reply\": \"<string>\",\n                \"createdAt\": \"<string>\"\n              },\n              {\n                \"_id\": \"<string>\",\n                \"reply\": \"<string>\",\n                \"createdAt\": \"<string>\"\n              }\n            ],\n            \"createdAt\": \"<string>\"\n          },\n          {\n            \"_id\": \"<string>\",\n            \"review\": \"<string>\",\n            \"rating\": \"<integer>\",\n            \"reviewerId\": \"<string>\",\n            \"reviewerName\": \"<string>\",\n            \"ownerReply\": [\n              {\n                \"_id\": \"<string>\",\n                \"reply\": \"<string>\",\n                \"createdAt\": \"<string>\"\n              },\n              {\n                \"_id\": \"<string>\",\n                \"reply\": \"<string>\",\n                \"createdAt\": \"<string>\"\n              }\n            ],\n            \"createdAt\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"contactInfo\": {\n          \"emailId\": \"<string>\",\n          \"phoneNumber\": \"<string>\"\n        },\n        \"address\": {\n          \"line_1\": \"<string>\",\n          \"street\": \"<string>\",\n          \"city\": \"<string>\",\n          \"pincode\": \"<string>\",\n          \"country\": \"<string>\"\n        },\n        \"createdBy\": {\n          \"_id\": \"<string>\",\n          \"onwerName\": \"<string>\",\n          \"ownerType\": \"<string>\"\n        },\n        \"_id\": \"<string>\",\n        \"restaurantName\": \"<string>\",\n        \"tableCapacity\": \"<integer>\",\n        \"images\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"foodMenu\": [\n          {\n            \"itemName\": \"<string>\",\n            \"itemPrice\": \"<string>\",\n            \"_id\": \"<string>\"\n          },\n          {\n            \"itemName\": \"<string>\",\n            \"itemPrice\": \"<string>\",\n            \"_id\": \"<string>\"\n          }\n        ],\n        \"reviewsInfo\": [\n          {\n            \"_id\": \"<string>\",\n            \"review\": \"<string>\",\n            \"rating\": \"<integer>\",\n            \"reviewerId\": \"<string>\",\n            \"reviewerName\": \"<string>\",\n            \"ownerReply\": [\n              {\n                \"_id\": \"<string>\",\n                \"reply\": \"<string>\",\n                \"createdAt\": \"<string>\"\n              },\n              {\n                \"_id\": \"<string>\",\n                \"reply\": \"<string>\",\n                \"createdAt\": \"<string>\"\n              }\n            ],\n            \"createdAt\": \"<string>\"\n          },\n          {\n            \"_id\": \"<string>\",\n            \"review\": \"<string>\",\n            \"rating\": \"<integer>\",\n            \"reviewerId\": \"<string>\",\n            \"reviewerName\": \"<string>\",\n            \"ownerReply\": [\n              {\n                \"_id\": \"<string>\",\n                \"reply\": \"<string>\",\n                \"createdAt\": \"<string>\"\n              },\n              {\n                \"_id\": \"<string>\",\n                \"reply\": \"<string>\",\n                \"createdAt\": \"<string>\"\n              }\n            ],\n            \"createdAt\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"restaurantCount\": \"<integer>\"\n  },\n  \"message\": \"<string>\"\n}"
+										},
+										{
+											"name": "Internal Server Error",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/listing",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"listing"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Delete a restaurant (Admin only)",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{bearerToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/listing?restaurantId=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"listing"
+											],
+											"query": [
+												{
+													"key": "restaurantId",
+													"value": "<string>",
+													"description": "(Required) The ID of the restaurant to be deleted"
+												}
+											]
+										},
+										"description": "Delete a restaurant with the restaurantId passed in query param. This route only can accessed by Admin."
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/listing?restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"listing"
+													],
+													"query": [
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) The ID of the restaurant to be deleted"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"message\": \"<string>\"\n}"
+										},
+										{
+											"name": "Bad request",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/listing?restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"listing"
+													],
+													"query": [
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) The ID of the restaurant to be deleted"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Not found",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/listing?restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"listing"
+													],
+													"query": [
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) The ID of the restaurant to be deleted"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Internal Server Error",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/listing?restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"listing"
+													],
+													"query": [
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) The ID of the restaurant to be deleted"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Update a restaurant (Admin or Business Owner only)",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"restaurantName\": \"<string>\",\n  \"contactInfo\": {\n    \"emailId\": \"<email>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"address\": {\n    \"line_1\": \"<string>\",\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"pincode\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"tableCapacity\": \"<integer>\",\n  \"images\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"foodMenu\": [\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    },\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/listing?restaurantId=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"listing"
+											],
+											"query": [
+												{
+													"key": "restaurantId",
+													"value": "<string>",
+													"description": "(Required) The ID of the restaurant to be updated"
+												}
+											]
+										},
+										"description": "Update details of a restaurant. This endpoint is accessible only by users with roles 'admin' or 'bo'. Whereas the Restaurant owned Users from roles bo, admin only can update."
+									},
+									"response": [
+										{
+											"name": "Restaurant updated successfully",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"restaurantName\": \"<string>\",\n  \"contactInfo\": {\n    \"emailId\": \"<email>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"address\": {\n    \"line_1\": \"<string>\",\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"pincode\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"tableCapacity\": \"<integer>\",\n  \"images\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"foodMenu\": [\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    },\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/listing?restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"listing"
+													],
+													"query": [
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) The ID of the restaurant to be updated"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"_id\": \"<string>\",\n  \"restaurantName\": \"<string>\",\n  \"contactInfo\": {\n    \"emailId\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"address\": {\n    \"line_1\": \"<string>\",\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"pincode\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"tableCapacity\": \"<integer>\",\n  \"images\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"foodMenu\": [\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    },\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    }\n  ],\n  \"createdBy\": {\n    \"_id\": \"<string>\",\n    \"onwerName\": \"<string>\",\n    \"ownerType\": \"<string>\"\n  },\n  \"reviewsInfo\": [\n    {\n      \"_id\": \"<string>\",\n      \"review\": \"<string>\",\n      \"rating\": \"<number>\",\n      \"reviewerId\": \"<string>\",\n      \"reviewerName\": \"<string>\",\n      \"ownerReply\": [\n        {\n          \"_id\": \"<string>\",\n          \"reply\": \"<string>\",\n          \"createdAt\": \"<dateTime>\"\n        },\n        {\n          \"_id\": \"<string>\",\n          \"reply\": \"<string>\",\n          \"createdAt\": \"<dateTime>\"\n        }\n      ],\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"_id\": \"<string>\",\n      \"review\": \"<string>\",\n      \"rating\": \"<number>\",\n      \"reviewerId\": \"<string>\",\n      \"reviewerName\": \"<string>\",\n      \"ownerReply\": [\n        {\n          \"_id\": \"<string>\",\n          \"reply\": \"<string>\",\n          \"createdAt\": \"<dateTime>\"\n        },\n        {\n          \"_id\": \"<string>\",\n          \"reply\": \"<string>\",\n          \"createdAt\": \"<dateTime>\"\n        }\n      ],\n      \"createdAt\": \"<dateTime>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Bad request",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"restaurantName\": \"<string>\",\n  \"contactInfo\": {\n    \"emailId\": \"<email>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"address\": {\n    \"line_1\": \"<string>\",\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"pincode\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"tableCapacity\": \"<integer>\",\n  \"images\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"foodMenu\": [\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    },\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/listing?restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"listing"
+													],
+													"query": [
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) The ID of the restaurant to be updated"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Unauthorized - User not allowed to update restaurant",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"restaurantName\": \"<string>\",\n  \"contactInfo\": {\n    \"emailId\": \"<email>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"address\": {\n    \"line_1\": \"<string>\",\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"pincode\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"tableCapacity\": \"<integer>\",\n  \"images\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"foodMenu\": [\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    },\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/listing?restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"listing"
+													],
+													"query": [
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) The ID of the restaurant to be updated"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Restaurant not found",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"restaurantName\": \"<string>\",\n  \"contactInfo\": {\n    \"emailId\": \"<email>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"address\": {\n    \"line_1\": \"<string>\",\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"pincode\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"tableCapacity\": \"<integer>\",\n  \"images\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"foodMenu\": [\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    },\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/listing?restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"listing"
+													],
+													"query": [
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) The ID of the restaurant to be updated"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Internal Server Error",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"restaurantName\": \"<string>\",\n  \"contactInfo\": {\n    \"emailId\": \"<email>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"address\": {\n    \"line_1\": \"<string>\",\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"pincode\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"tableCapacity\": \"<integer>\",\n  \"images\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"foodMenu\": [\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    },\n    {\n      \"itemName\": \"<string>\",\n      \"itemPrice\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/listing?restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"listing"
+													],
+													"query": [
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) The ID of the restaurant to be updated"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "review",
+							"item": [
+								{
+									"name": "create-review",
+									"item": [
+										{
+											"name": "Create a review (Access - Admin, User)",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"review\": \"<string>\",\n  \"rating\": \"<number>\",\n  \"restaurantId\": \"<string>\",\n  \"ownerId\": \"<string>\",\n  \"reviewType\": \"<string>\",\n  \"repliedTo\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/review/create-review",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"review",
+														"create-review"
+													]
+												},
+												"description": "Admin & User can create a review on a restaurant"
+											},
+											"response": [
+												{
+													"name": "Review created successfully",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"review\": \"<string>\",\n  \"rating\": \"<number>\",\n  \"restaurantId\": \"<string>\",\n  \"ownerId\": \"<string>\",\n  \"reviewType\": \"<string>\",\n  \"repliedTo\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/review/create-review",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"review",
+																"create-review"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"status\": \"<boolean>\",\n  \"data\": {},\n  \"message\": \"<string>\"\n}"
+												},
+												{
+													"name": "Bad request",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"review\": \"<string>\",\n  \"rating\": \"<number>\",\n  \"restaurantId\": \"<string>\",\n  \"ownerId\": \"<string>\",\n  \"reviewType\": \"<string>\",\n  \"repliedTo\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/review/create-review",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"review",
+																"create-review"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Not found",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"review\": \"<string>\",\n  \"rating\": \"<number>\",\n  \"restaurantId\": \"<string>\",\n  \"ownerId\": \"<string>\",\n  \"reviewType\": \"<string>\",\n  \"repliedTo\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/review/create-review",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"review",
+																"create-review"
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Internal Server Error",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"review\": \"<string>\",\n  \"rating\": \"<number>\",\n  \"restaurantId\": \"<string>\",\n  \"ownerId\": \"<string>\",\n  \"reviewType\": \"<string>\",\n  \"repliedTo\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/review/create-review",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"review",
+																"create-review"
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "reply",
+									"item": [
+										{
+											"name": "Reply to a review (Access - Buisness Owner & Admin)",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"reply\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/review/reply?reviewId=<string>&restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"review",
+														"reply"
+													],
+													"query": [
+														{
+															"key": "reviewId",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												},
+												"description": "Buisness Owner & Admin can Reply to a review only if they are owner of Restaurant"
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"reply\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/review/reply?reviewId=<string>&restaurantId=<string>",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"review",
+																"reply"
+															],
+															"query": [
+																{
+																	"key": "reviewId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																},
+																{
+																	"key": "restaurantId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"status\": \"<boolean>\",\n  \"data\": {\n    \"restaurantDetails\": {\n      \"contactInfo\": {\n        \"emailId\": \"<string>\",\n        \"phoneNumber\": \"<string>\"\n      },\n      \"address\": {\n        \"line_1\": \"<string>\",\n        \"street\": \"<string>\",\n        \"city\": \"<string>\",\n        \"pincode\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"createdBy\": {\n        \"_id\": \"<string>\",\n        \"onwerName\": \"<string>\",\n        \"ownerType\": \"<string>\"\n      },\n      \"_id\": \"<string>\",\n      \"restaurantName\": \"<string>\",\n      \"tableCapacity\": \"<number>\",\n      \"images\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"foodMenu\": [\n        {\n          \"_id\": \"<string>\",\n          \"itemName\": \"<string>\",\n          \"itemPrice\": \"<string>\"\n        },\n        {\n          \"_id\": \"<string>\",\n          \"itemName\": \"<string>\",\n          \"itemPrice\": \"<string>\"\n        }\n      ],\n      \"reviewsInfo\": [\n        {\n          \"_id\": \"<string>\",\n          \"review\": \"<string>\",\n          \"rating\": \"<number>\",\n          \"reviewerId\": \"<string>\",\n          \"reviewerName\": \"<string>\",\n          \"ownerReply\": [\n            {\n              \"_id\": \"<string>\",\n              \"reply\": \"<string>\",\n              \"createdAt\": \"<string>\"\n            },\n            {\n              \"_id\": \"<string>\",\n              \"reply\": \"<string>\",\n              \"createdAt\": \"<string>\"\n            }\n          ],\n          \"createdAt\": \"<string>\"\n        },\n        {\n          \"_id\": \"<string>\",\n          \"review\": \"<string>\",\n          \"rating\": \"<number>\",\n          \"reviewerId\": \"<string>\",\n          \"reviewerName\": \"<string>\",\n          \"ownerReply\": [\n            {\n              \"_id\": \"<string>\",\n              \"reply\": \"<string>\",\n              \"createdAt\": \"<string>\"\n            },\n            {\n              \"_id\": \"<string>\",\n              \"reply\": \"<string>\",\n              \"createdAt\": \"<string>\"\n            }\n          ],\n          \"createdAt\": \"<string>\"\n        }\n      ],\n      \"createdAt\": \"<string>\",\n      \"updatedAt\": \"<string>\",\n      \"__v\": \"<number>\"\n    },\n    \"updatedReviewDetails\": {\n      \"_id\": \"<string>\",\n      \"reviewerId\": \"<string>\",\n      \"reviewerName\": \"<string>\",\n      \"review\": \"<string>\",\n      \"rating\": \"<number>\",\n      \"status\": \"<string>\",\n      \"restaurantId\": \"<string>\",\n      \"restaurantName\": \"<string>\",\n      \"ownerId\": \"<string>\",\n      \"reviewType\": \"<string>\",\n      \"repliedTo\": \"<string>\",\n      \"ownerReply\": [\n        {\n          \"_id\": \"<string>\",\n          \"reply\": \"<string>\",\n          \"createdAt\": \"<string>\"\n        },\n        {\n          \"_id\": \"<string>\",\n          \"reply\": \"<string>\",\n          \"createdAt\": \"<string>\"\n        }\n      ],\n      \"createdAt\": \"<string>\",\n      \"updatedAt\": \"<string>\",\n      \"__v\": \"<number>\"\n    }\n  },\n  \"message\": \"<string>\"\n}"
+												},
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"reply\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/review/reply?reviewId=<string>&restaurantId=<string>",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"review",
+																"reply"
+															],
+															"query": [
+																{
+																	"key": "reviewId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																},
+																{
+																	"key": "restaurantId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"reply\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/review/reply?reviewId=<string>&restaurantId=<string>",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"review",
+																"reply"
+															],
+															"query": [
+																{
+																	"key": "reviewId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																},
+																{
+																	"key": "restaurantId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Internal Server Error",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"reply\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/review/reply?reviewId=<string>&restaurantId=<string>",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"review",
+																"reply"
+															],
+															"query": [
+																{
+																	"key": "reviewId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																},
+																{
+																	"key": "restaurantId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "reply-update",
+									"item": [
+										{
+											"name": "Update Reply (Access - Buisness Owner & Admin)",
+											"request": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"reply\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/review/reply-update?replyId=<string>&reviewId=<string>&restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"review",
+														"reply-update"
+													],
+													"query": [
+														{
+															"key": "replyId",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "reviewId",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												},
+												"description": "Buisness Owner & Admin can update to their Reply to a review only if they are owner of Restaurant"
+											},
+											"response": [
+												{
+													"name": "Successful response",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"reply\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/review/reply-update?replyId=<string>&reviewId=<string>&restaurantId=<string>",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"review",
+																"reply-update"
+															],
+															"query": [
+																{
+																	"key": "replyId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																},
+																{
+																	"key": "reviewId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																},
+																{
+																	"key": "restaurantId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"status\": \"<boolean>\",\n  \"data\": {\n    \"contactInfo\": {\n      \"emailId\": \"<string>\",\n      \"phoneNumber\": \"<string>\"\n    },\n    \"address\": {\n      \"line_1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"city\": \"<string>\",\n      \"pincode\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"createdBy\": {\n      \"_id\": \"<string>\",\n      \"onwerName\": \"<string>\",\n      \"ownerType\": \"<string>\"\n    },\n    \"_id\": \"<string>\",\n    \"restaurantName\": \"<string>\",\n    \"tableCapacity\": \"<number>\",\n    \"images\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"foodMenu\": [\n      {\n        \"_id\": \"<string>\",\n        \"itemName\": \"<string>\",\n        \"itemPrice\": \"<string>\"\n      },\n      {\n        \"_id\": \"<string>\",\n        \"itemName\": \"<string>\",\n        \"itemPrice\": \"<string>\"\n      }\n    ],\n    \"reviewsInfo\": [\n      {\n        \"_id\": \"<string>\",\n        \"review\": \"<string>\",\n        \"rating\": \"<number>\",\n        \"reviewerId\": \"<string>\",\n        \"reviewerName\": \"<string>\",\n        \"ownerReply\": [\n          {\n            \"_id\": \"<string>\",\n            \"reply\": \"<string>\",\n            \"createdAt\": \"<string>\"\n          },\n          {\n            \"_id\": \"<string>\",\n            \"reply\": \"<string>\",\n            \"createdAt\": \"<string>\"\n          }\n        ],\n        \"createdAt\": \"<string>\"\n      },\n      {\n        \"_id\": \"<string>\",\n        \"review\": \"<string>\",\n        \"rating\": \"<number>\",\n        \"reviewerId\": \"<string>\",\n        \"reviewerName\": \"<string>\",\n        \"ownerReply\": [\n          {\n            \"_id\": \"<string>\",\n            \"reply\": \"<string>\",\n            \"createdAt\": \"<string>\"\n          },\n          {\n            \"_id\": \"<string>\",\n            \"reply\": \"<string>\",\n            \"createdAt\": \"<string>\"\n          }\n        ],\n        \"createdAt\": \"<string>\"\n      }\n    ],\n    \"createdAt\": \"<string>\",\n    \"updatedAt\": \"<string>\",\n    \"__v\": \"<number>\"\n  },\n  \"message\": \"<string>\"\n}"
+												},
+												{
+													"name": "Bad request",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"reply\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/review/reply-update?replyId=<string>&reviewId=<string>&restaurantId=<string>",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"review",
+																"reply-update"
+															],
+															"query": [
+																{
+																	"key": "replyId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																},
+																{
+																	"key": "reviewId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																},
+																{
+																	"key": "restaurantId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Unauthorized",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"reply\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/review/reply-update?replyId=<string>&reviewId=<string>&restaurantId=<string>",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"review",
+																"reply-update"
+															],
+															"query": [
+																{
+																	"key": "replyId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																},
+																{
+																	"key": "reviewId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																},
+																{
+																	"key": "restaurantId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Not found",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"reply\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/review/reply-update?replyId=<string>&reviewId=<string>&restaurantId=<string>",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"review",
+																"reply-update"
+															],
+															"query": [
+																{
+																	"key": "replyId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																},
+																{
+																	"key": "reviewId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																},
+																{
+																	"key": "restaurantId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Internal server error",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"reply\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/review/reply-update?replyId=<string>&reviewId=<string>&restaurantId=<string>",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"review",
+																"reply-update"
+															],
+															"query": [
+																{
+																	"key": "replyId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																},
+																{
+																	"key": "reviewId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																},
+																{
+																	"key": "restaurantId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "getMyReviews",
+									"item": [
+										{
+											"name": "Get reviews submitted (Access - Logged in User)",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/review/getMyReviews",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"review",
+														"getMyReviews"
+													]
+												},
+												"description": "Get reviews submitted by UserId from JWT Token"
+											},
+											"response": [
+												{
+													"name": "Success",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/review/getMyReviews",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"review",
+																"getMyReviews"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"status\": \"<boolean>\",\n  \"data\": {\n    \"myReviews\": [\n      {\n        \"_id\": \"<string>\",\n        \"reviewerId\": \"<string>\",\n        \"reviewerName\": \"<string>\",\n        \"review\": \"<string>\",\n        \"rating\": \"<number>\",\n        \"status\": \"<string>\",\n        \"restaurantId\": \"<string>\",\n        \"restaurantName\": \"<string>\",\n        \"ownerId\": \"<string>\",\n        \"reviewType\": \"<string>\",\n        \"repliedTo\": \"<string>\",\n        \"ownerReply\": [\n          {\n            \"_id\": \"<string>\",\n            \"reply\": \"<string>\",\n            \"createdAt\": \"<dateTime>\"\n          },\n          {\n            \"_id\": \"<string>\",\n            \"reply\": \"<string>\",\n            \"createdAt\": \"<dateTime>\"\n          }\n        ],\n        \"createdAt\": \"<dateTime>\"\n      },\n      {\n        \"_id\": \"<string>\",\n        \"reviewerId\": \"<string>\",\n        \"reviewerName\": \"<string>\",\n        \"review\": \"<string>\",\n        \"rating\": \"<number>\",\n        \"status\": \"<string>\",\n        \"restaurantId\": \"<string>\",\n        \"restaurantName\": \"<string>\",\n        \"ownerId\": \"<string>\",\n        \"reviewType\": \"<string>\",\n        \"repliedTo\": \"<string>\",\n        \"ownerReply\": [\n          {\n            \"_id\": \"<string>\",\n            \"reply\": \"<string>\",\n            \"createdAt\": \"<dateTime>\"\n          },\n          {\n            \"_id\": \"<string>\",\n            \"reply\": \"<string>\",\n            \"createdAt\": \"<dateTime>\"\n          }\n        ],\n        \"createdAt\": \"<dateTime>\"\n      }\n    ]\n  },\n  \"message\": \"<string>\"\n}"
+												},
+												{
+													"name": "Internal Server Error",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/review/getMyReviews",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"review",
+																"getMyReviews"
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "bo",
+									"item": [
+										{
+											"name": "getPendingReviews",
+											"item": [
+												{
+													"name": "Get pending reviews (Access - Business Owner)",
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/review/bo/getPendingReviews",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"review",
+																"bo",
+																"getPendingReviews"
+															]
+														},
+														"description": "Get pending reviews for a business owner to reply. Accessed only by Logged in Business Owner."
+													},
+													"response": [
+														{
+															"name": "Success",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	},
+																	{
+																		"description": "Added as a part of security scheme: bearer",
+																		"key": "Authorization",
+																		"value": "Bearer <token>"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/review/bo/getPendingReviews",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"review",
+																		"bo",
+																		"getPendingReviews"
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n  \"status\": \"<boolean>\",\n  \"data\": {\n    \"pendingReview\": [\n      {\n        \"_id\": \"<string>\",\n        \"reviewerId\": \"<string>\",\n        \"reviewerName\": \"<string>\",\n        \"review\": \"<string>\",\n        \"rating\": \"<number>\",\n        \"status\": \"<string>\",\n        \"restaurantId\": \"<string>\",\n        \"restaurantName\": \"<string>\",\n        \"ownerId\": \"<string>\",\n        \"reviewType\": \"<string>\",\n        \"repliedTo\": \"<string>\",\n        \"ownerReply\": [\n          {\n            \"_id\": \"<string>\",\n            \"reply\": \"<string>\",\n            \"createdAt\": \"<dateTime>\"\n          },\n          {\n            \"_id\": \"<string>\",\n            \"reply\": \"<string>\",\n            \"createdAt\": \"<dateTime>\"\n          }\n        ],\n        \"createdAt\": \"<dateTime>\"\n      },\n      {\n        \"_id\": \"<string>\",\n        \"reviewerId\": \"<string>\",\n        \"reviewerName\": \"<string>\",\n        \"review\": \"<string>\",\n        \"rating\": \"<number>\",\n        \"status\": \"<string>\",\n        \"restaurantId\": \"<string>\",\n        \"restaurantName\": \"<string>\",\n        \"ownerId\": \"<string>\",\n        \"reviewType\": \"<string>\",\n        \"repliedTo\": \"<string>\",\n        \"ownerReply\": [\n          {\n            \"_id\": \"<string>\",\n            \"reply\": \"<string>\",\n            \"createdAt\": \"<dateTime>\"\n          },\n          {\n            \"_id\": \"<string>\",\n            \"reply\": \"<string>\",\n            \"createdAt\": \"<dateTime>\"\n          }\n        ],\n        \"createdAt\": \"<dateTime>\"\n      }\n    ]\n  },\n  \"message\": \"<string>\"\n}"
+														},
+														{
+															"name": "Internal Server Error",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"description": "Added as a part of security scheme: bearer",
+																		"key": "Authorization",
+																		"value": "Bearer <token>"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/review/bo/getPendingReviews",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"review",
+																		"bo",
+																		"getPendingReviews"
+																	]
+																}
+															},
+															"status": "Internal Server Error",
+															"code": 500,
+															"_postman_previewlanguage": "text",
+															"header": [],
+															"cookie": [],
+															"body": ""
+														}
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "Delete a review (Access - Admin, User)",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/review?reviewId=<string>&restaurantId=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"review"
+											],
+											"query": [
+												{
+													"key": "reviewId",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "restaurantId",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Delete a review by its reviewId and restaurantId. Admin can delete any review, but User can only delete their own review."
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/review?reviewId=<string>&restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"review"
+													],
+													"query": [
+														{
+															"key": "reviewId",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"status\": \"<boolean>\",\n  \"data\": {},\n  \"message\": \"<string>\"\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/review?reviewId=<string>&restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"review"
+													],
+													"query": [
+														{
+															"key": "reviewId",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Unauthorized to Delete",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/review?reviewId=<string>&restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"review"
+													],
+													"query": [
+														{
+															"key": "reviewId",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "No Review Found to Delete or Given Restaurant Details not correct",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/review?reviewId=<string>&restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"review"
+													],
+													"query": [
+														{
+															"key": "reviewId",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Internal Server Error",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/review?reviewId=<string>&restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"review"
+													],
+													"query": [
+														{
+															"key": "reviewId",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Update Reply (Access - Admin & User)",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"review\": \"<string>\",\n  \"rating\": \"<number>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/review?reviewId=<string>&restaurantId=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"review"
+											],
+											"query": [
+												{
+													"key": "reviewId",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "restaurantId",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Admin & User can update to their Review if they created it."
+									},
+									"response": [
+										{
+											"name": "Successful response with updated review details.",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"review\": \"<string>\",\n  \"rating\": \"<number>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/review?reviewId=<string>&restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"review"
+													],
+													"query": [
+														{
+															"key": "reviewId",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"status\": \"<boolean>\",\n  \"data\": {},\n  \"message\": \"<string>\"\n}"
+										},
+										{
+											"name": "Bad request, missing or invalid parameters.",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"review\": \"<string>\",\n  \"rating\": \"<number>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/review?reviewId=<string>&restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"review"
+													],
+													"query": [
+														{
+															"key": "reviewId",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Unauthorized access, user not authorized to update review.",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"review\": \"<string>\",\n  \"rating\": \"<number>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/review?reviewId=<string>&restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"review"
+													],
+													"query": [
+														{
+															"key": "reviewId",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Review or restaurant not found.",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"review\": \"<string>\",\n  \"rating\": \"<number>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/review?reviewId=<string>&restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"review"
+													],
+													"query": [
+														{
+															"key": "reviewId",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Internal server error.",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"review\": \"<string>\",\n  \"rating\": \"<number>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/review?reviewId=<string>&restaurantId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"review"
+													],
+													"query": [
+														{
+															"key": "reviewId",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "restaurantId",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{bearerToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000"
+		}
+	]
+}

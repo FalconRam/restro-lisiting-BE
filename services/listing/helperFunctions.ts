@@ -22,12 +22,16 @@ export const findWhoUpdating = async (
         break;
       }
       default:
+        // throw error on other role apart from admin & bo
         throw new Error(`Unknown user type ${req.userType}`);
     }
     if (!ownerDetails) throw new Error("Unknown user");
 
+    // set authorization as true if the createdBy id and session id matched
     let isAuthorizedToEdit =
       restaurantDetails.createdBy._id === ownerDetails._id;
+
+    // set authorization as true if the user is admin, since User can do any action
     if (!isAuthorizedToEdit)
       isAuthorizedToEdit = req.userType === UserType.admin;
 

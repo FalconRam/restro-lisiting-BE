@@ -38,6 +38,7 @@ export const createUserController = async (req: Request, res: Response) => {
 
     let newUser;
 
+    // Create a New User as per role, BusinessOwner & Admin inherit User model
     if (userType === UserType.bo) {
       newUser = await BusinessOwner.create({
         userName,
@@ -112,6 +113,7 @@ export const loginController = async (req: Request, res: Response) => {
     if (!bcrypt.compareSync(password, existingUser.password))
       return createErrorResponse(res, 404, {}, "Incorrect Account Details");
 
+    // Generate JWT access Token
     const accessToken = await signJWTToken({
       _id: existingUser._id,
       emailId: existingUser.emailId,
