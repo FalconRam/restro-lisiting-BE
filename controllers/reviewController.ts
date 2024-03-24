@@ -180,8 +180,8 @@ export const updateReviewController = async (req: Request, res: Response) => {
     return createSuccessResponse(
       res,
       200,
-      { restaurantDetails },
-      "Your reviews retrieved successfully!..."
+      {},
+      "Your Review updated successfully!..."
     );
   } catch (error: any) {
     createErrorResponse(res, 500, {}, error.messsage || error.stack || error);

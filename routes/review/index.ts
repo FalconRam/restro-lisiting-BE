@@ -104,7 +104,7 @@ router.delete("/", adminUserMiddleware, deleteReviewController);
  *     tags:
  *       - Review
  *     summary: Update Reply (Access - Admin & User)
- *     description:  Admin & User can update to their Reply to a review only
+ *     description:  Admin & User can update to their Review if they created it.
  *     parameters:
  *       - in: query
  *         name: reviewId
@@ -116,6 +116,27 @@ router.delete("/", adminUserMiddleware, deleteReviewController);
  *         required: true
  *         schema:
  *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/UpdateReviewRequest'
+ *     responses:
+ *       '200':
+ *         description: Successful response with updated review details.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/UpdateReviewResponse'
+ *       '400':
+ *         description: Bad request, missing or invalid parameters.
+ *       '401':
+ *         description: Unauthorized access, user not authorized to update review.
+ *       '404':
+ *         description: Review or restaurant not found.
+ *       '500':
+ *         description: Internal server error.
  *
  */
 router.patch("/", adminUserMiddleware, updateReviewController);
@@ -187,7 +208,27 @@ router.post("/reply", adminBoMiddleware, replyToReviewController);
  *         required: true
  *         schema:
  *           type: string
- *
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ReplyUpdateRequest'
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ReplyUpdateResponse'
+ *       '400':
+ *         description: Bad request
+ *       '401':
+ *         description: Unauthorized
+ *       '404':
+ *         description: Not found
+ *       '500':
+ *         description: Internal server error
  */
 router.patch("/reply-update", adminBoMiddleware, updateReplyController);
 
