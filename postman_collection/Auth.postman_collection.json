@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "3273a6f3-98bc-4057-9099-70c18f90e80e",
+		"name": "Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17117187"
+	},
+	"item": [
+		{
+			"name": "createUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\": \"Ram Vignesh M\",\r\n    \"emailId\": \"ramm@gmail.com\",\r\n    \"password\": \"rampass\",\r\n    \"userType\": \"user\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/auth/create-user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"create-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signIn",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"emailId\": \"ramm@gmail.com\",\r\n    \"password\": \"rampass\"\r\n}\r\n// {\r\n//     \"emailId\": \"admin@gmail.com\",\r\n//     \"password\": \"adminpass\"\r\n// }\r\n// {\r\n//     \"emailId\": \"bo@gmail.com\",\r\n//     \"password\": \"bopassword\"\r\n// }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
