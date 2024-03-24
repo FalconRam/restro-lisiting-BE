@@ -44,6 +44,7 @@ export const createRestaurantController = async (
 
     let newRestaurant;
 
+    // Create a new restaurant based on UserType
     if (req.userType === UserType.bo) {
       let boDetails = await BusinessOwner.findOne({ emailId: req.emailId });
       if (!boDetails) return createErrorResponse(res, 401, {}, "Unauthorized");
@@ -56,6 +57,7 @@ export const createRestaurantController = async (
 
       newRestaurant = await RestaurantsListing.create(req.body);
 
+      // Add the newly created restaurant Id in UserDetails
       boDetails.ownedRestaurants.push(newRestaurant._id);
       await BusinessOwner.findByIdAndUpdate(boDetails._id, boDetails, {
         new: true,
@@ -73,6 +75,7 @@ export const createRestaurantController = async (
 
       newRestaurant = await RestaurantsListing.create(req.body);
 
+      // Add the newly created restaurant Id in UserDetails
       adminDetails.ownedRestaurants.push(newRestaurant._id);
       await Admin.findByIdAndUpdate(adminDetails._id, adminDetails, {
         new: true,

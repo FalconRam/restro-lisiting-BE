@@ -1,5 +1,11 @@
 import { Response } from "express";
 
+/**
+ *@function createSuccessResponse
+ *
+ * @description return success response to client on success case
+ *
+ */
 export const createSuccessResponse = (
   res: Response,
   statusCode: number,
@@ -13,6 +19,12 @@ export const createSuccessResponse = (
   });
 };
 
+/**
+ *@function createErrorResponse
+ *
+ * @description return error response to client on failure case
+ *
+ */
 export const createErrorResponse = (
   res: Response,
   statusCode: number,
