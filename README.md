@@ -32,6 +32,9 @@ A separate collection to track Reviews, so any one can retrieve their reviews an
 4.  `npm install`
 5.  `npm run dev` (under the hood it will runs `npx nodemon index.ts`) - this will auto compile typescript file and start the server.
     Access all the api from the localhost base URL - http://localhost:5000
+6. In postman_collection directory, all the Routes collection available along with swagger.json file.
+7. Import all the collection and Interact with as per "API Functionalities" defined below.
+8. Use Swagger-UI or swagger.json to import in postman to undestand, how is the request body & response body returned.
 
 ## Business Rule
 
